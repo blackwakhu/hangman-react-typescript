@@ -1,2 +1,15 @@
 main {
 }
+
+button{
+  padding: 10px;
+  margin: 5px;
+  background: white;
+  border: 2px black solid;
+  border-radius: 10px;
+}
+
+button:hover{
+  background: #00ff00;
+  border: #00ffff;
+}
