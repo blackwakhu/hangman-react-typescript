@@ -81,12 +81,12 @@ export default function App() {
               <button onClick={()=>handleClick(letter)} className="keyboard-btns" key={index}>{letter}</button>
             ))}
           </div>
-          <button className='keyboard-reset' onClick={resetPlay}>Reset Progress</button>
+          <button className='keyboard-reset btn' onClick={resetPlay}>Reset Progress</button>
         </div>
         <div className={`${win ? '': 'hidden'}`}>
-          <p className="win-msg">You Got The Word</p>
-          <button onClick={playAgain}>Play Again</button>
-          <button onClick={resetPlay}>Reset Progress</button>
+          <p className="win-msg">You Got The Word!!!</p>
+          <button className="playagain-btn btn" onClick={playAgain}>Play Again</button>
+          <button className="reset-btn btn" onClick={resetPlay}>Reset Progress</button>
         </div>
       </div>
     </main>

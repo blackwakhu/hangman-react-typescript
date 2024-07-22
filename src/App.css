@@ -1,10 +1,32 @@
 main {
 }
 
+/* game div */
 .game-div{
   
 }
 
+/* win message  */
+.win-msg{
+  background: green;
+  width: 90%;
+  margin-left: 5%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 2px inset greenyellow;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 1.2em;
+  color: black;
+}
+
+.win-msg:hover{
+  background: greenyellow;
+  color: black;
+}
+
+/* keyboard related styles */
 .keyboard-div{
   margin-left: 25%;
   width: 50%;
@@ -13,23 +35,6 @@ main {
   background: whitesmoke;
   padding: 1.1em;
   display: block;
-}
-
-.keyboard-reset{
-  color: red;
-  border: solid 2px red;
-  border-radius: 5px;
-  padding: 5px;
-  text-align: center;
-  margin-left: 47%; 
-  margin-top: 10px; 
-  background: white;
-  font-size: 1.1em;
-}
-
-.keyboard-reset:hover{
-  background: red;
-  color: white;
 }
 
 .keyboard-btns{
@@ -53,3 +58,43 @@ main {
 .hidden{
   display: none;
 }
+
+/* other buttons */
+.keyboard-reset{
+  color: red;
+  border: solid 2px red;  
+  margin-left: 47%; 
+  margin-top: 10px; 
+}
+
+.btn{
+  padding: 5px;
+  background: white;
+  font-size: 1.1em;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.reset-btn{
+  color: red;
+  border: solid 2px red;
+  margin: 10px;
+}
+
+.keyboard-reset:hover, .reset-btn:hover{
+  background: red;
+  color: white;
+}
+
+.playagain-btn{
+  margin-left: 45%;
+  margin-top: 10px;
+  color: #0080ff;
+  border: solid 2px #0080ff;
+}
+
+.playagain-btn:hover{
+  background: #0080ff;
+  color: white;
+}
+
