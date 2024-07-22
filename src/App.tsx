@@ -1,5 +1,5 @@
 import './App.css'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 const letters: string = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S","T", "U", "V", "W", "X", "Y", "Z"]
 const vocabulary: string = [
@@ -19,32 +19,45 @@ export default function App() {
   const [ind, setInd] = useState(0)
   const [score, setScore] = useState(0)
   const [guess, setGuess] = useState("")
-  // const generateWord = ()=>{
-  //   if (isFin == true){
-  //     setWord(vocabulary[ind])
-  //     setFin(false)
-  //   }
-  // }
-  useEffect(function(){
-    function runAtStart(){
-      setGuess(generateRandom())
-      setWord(guess.split("").map(char=> '_'.repeat(char.length)).join(''))
-    }
-    runAtStart()
-  }, [])
+  const [showgame, setShowgame] = useState(false)
   const generateRandom = () => {
     let random = Math.floor(Math.random() * vocabulary.length)
-    return vocabulary[random]
+    return vocabulary[random].toUppercase
+  }
+  const generateDashes = () => {
+    let randomWord: string = generateRandom();
+    setGuess(randomWord);
+    let dashesArray: string[] = randomWord.split("").map((char) => "_");
+    setWord(dashesArray.join(""));
+  };
+  const handleClick = function(letter){
+    console.log(guess)
+    if (ind < guess.length){
+      if (guess[ind] === letter){
+        setWord(word.slice(0, ind)+letter+word.slice(ind+1))
+        setInd(ind+1)
+      }else{
+        alert("Not the letter")
+      }
+    }
+    console.log(word)
+  }
+  const handleVisible = function(){
+    setShowgame(true)
+    generateDashes()
   }
   return (
     <main>
       <h1>Hangman Game</h1>
-      <div>
+      <div className={`play-div ${showgame ? 'hidden' : ''}`}>
+        <button onClick={handleVisible}>Play</button>
+      </div>
+      <div className={`game-div ${showgame ? '' : 'hidden'}`}>
         <h2>Score: {score}</h2>
         <p className="word_char">{word}</p>
         <div>
           {letters.map((letter, index) => (
-            <button key={index}>{letter}</button>
+            <button onClick={()=>handleClick(letter)} className="keyboard-btns" key={index}>{letter}</button>
           ))}
         </div>
       </div>

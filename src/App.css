@@ -1,7 +1,11 @@
 main {
 }
 
-button{
+.game-div{
+  
+}
+
+.keyboard-btns{
   padding: 10px;
   margin: 5px;
   background: white;
@@ -9,11 +13,16 @@ button{
   border-radius: 10px;
 }
 
-button:hover{
+.keyboard-btns:hover{
   background: #00ff00;
   border: #00ffff;
 }
 
 .word_char{
   letter-spacing: 0.5em;
+  text-align: center;
+}
+
+.hidden{
+  display: none;
 }
