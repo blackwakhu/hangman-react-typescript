@@ -32,7 +32,7 @@ main {
   width: 50%;
   text-align: center;
   border: outset;
-  background: whitesmoke;
+  background: #606060;
   padding: 1.1em;
   display: block;
 }
@@ -40,14 +40,17 @@ main {
 .keyboard-btns{
   padding: 10px;
   margin: 5px;
+  color: #00d96c;
+  /* color: #00ffff; */
   background: white;
-  border: 2px black solid;
+  border: 2px #00ffff solid;
   border-radius: 10px;
 }
 
 .keyboard-btns:hover{
-  background: #00ff00;
-  border: #00ffff;
+  /* background: #00ff00; */
+  background: #00ffff;
+  color: white;
 }
 
 .word_char{
