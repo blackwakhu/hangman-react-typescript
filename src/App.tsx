@@ -1,8 +1,8 @@
 import './App.css'
 import { useState } from 'react'
 
-const letters: string = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S","T", "U", "V", "W", "X", "Y", "Z"]
-const vocabulary: string = [
+const letters: string[] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S","T", "U", "V", "W", "X", "Y", "Z"]
+const vocabulary: string[] = [
   "Apple", "Book", "Chair", "Dog", "Elephant", "Flower", "Guitar", "House", "Ice cream", "Jacket", "Key", "Lamp", "Mountain", 
   "Notebook", "Ocean", "Pencil", "Quilt", "River", "Shoe", "Table", "Umbrella", "Vase", "Window", "Xylophone", "Yarn", "Zebra", 
   "Balloon", "Cake", "Desk", "Egg", "Fork", "Globe", "Harp", "Ink", "Jelly", "Kite", "Ladder", "Mirror", "Newspaper", "Owl", 
@@ -22,21 +22,23 @@ export default function App() {
   const [showgame, setShowgame] = useState(false)
   const generateRandom = () => {
     let random = Math.floor(Math.random() * vocabulary.length)
-    return vocabulary[random].toUppercase
+    return vocabulary[random]
   }
   const generateDashes = () => {
-    let randomWord: string = generateRandom();
+    let randomWord: string = generateRandom().toLowerCase();
     setGuess(randomWord);
     let dashesArray: string[] = randomWord.split("").map((char) => "_");
     setWord(dashesArray.join(""));
   };
-  const handleClick = function(letter){
+  const handleClick = function(letter:string){
     console.log(guess)
-    if (ind < guess.length){
-      if (guess[ind] === letter){
-        setWord(word.slice(0, ind)+letter+word.slice(ind+1))
-        setInd(ind+1)
-      }else{
+    if (ind < guess.length) {
+      if (guess[ind] === letter) {
+        let newWord = word.split('');
+        newWord[ind] = letter;
+        setWord(newWord.join(''));
+        setInd(ind + 1);
+      } else {
         alert("Not the letter")
       }
     }
@@ -57,7 +59,7 @@ export default function App() {
         <p className="word_char">{word}</p>
         <div>
           {letters.map((letter, index) => (
-            <button onClick={()=>handleClick(letter)} className="keyboard-btns" key={index}>{letter}</button>
+            <button onClick={()=>handleClick(letter.toLowerCase())} className="keyboard-btns" key={index}>{letter}</button>
           ))}
         </div>
       </div>
