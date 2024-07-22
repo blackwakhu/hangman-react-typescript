@@ -1,5 +1,5 @@
 import './App.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const letters: string = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S","T", "U", "V", "W", "X", "Y", "Z"]
 const vocabulary: string = [
@@ -15,15 +15,33 @@ const vocabulary: string = [
 
 export default function App() {
   const [word, setWord] = useState("")
-  const [isFin, setFin] = useState(false)
+  const [isFin, setFin] = useState(true)
+  const [ind, setInd] = useState(0)
+  const [score, setScore] = useState(0)
+  const [guess, setGuess] = useState("")
+  // const generateWord = ()=>{
+  //   if (isFin == true){
+  //     setWord(vocabulary[ind])
+  //     setFin(false)
+  //   }
+  // }
+  useEffect(function(){
+    function runAtStart(){
+      setGuess(generateRandom())
+      setWord(guess.split("").map(char=> '_'.repeat(char.length)).join(''))
+    }
+    runAtStart()
+  }, [])
   const generateRandom = () => {
-    const random = Math.floor(Math.random() * vocabulary.length)
+    let random = Math.floor(Math.random() * vocabulary.length)
+    return vocabulary[random]
   }
   return (
     <main>
       <h1>Hangman Game</h1>
       <div>
-        <p></p>
+        <h2>Score: {score}</h2>
+        <p className="word_char">{word}</p>
         <div>
           {letters.map((letter, index) => (
             <button key={index}>{letter}</button>

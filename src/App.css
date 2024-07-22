@@ -13,3 +13,7 @@ button:hover{
   background: #00ff00;
   border: #00ffff;
 }
+
+.word_char{
+  letter-spacing: 0.5em;
+}
