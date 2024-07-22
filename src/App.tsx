@@ -19,13 +19,14 @@ export default function App() {
   const [ind, setInd] = useState(0)
   const [score, setScore] = useState(0)
   const [guess, setGuess] = useState("")
+  const [win, setWin] = useState(false)
   const [showgame, setShowgame] = useState(false)
   const generateRandom = () => {
     let random = Math.floor(Math.random() * vocabulary.length)
     return vocabulary[random]
   }
   const generateDashes = () => {
-    let randomWord: string = generateRandom().toLowerCase();
+    let randomWord: string = generateRandom().toUpperCase();
     setGuess(randomWord);
     let dashesArray: string[] = randomWord.split("").map((char) => "_");
     setWord(dashesArray.join(""));
@@ -33,16 +34,18 @@ export default function App() {
   const handleClick = function(letter:string){
     console.log(guess)
     if (ind < guess.length) {
-      if (guess[ind] === letter) {
+      if (guess[ind] === letter) {        
         let newWord = word.split('');
         newWord[ind] = letter;
-        setWord(newWord.join(''));
         setInd(ind + 1);
+        setWord(newWord.join(''));
       } else {
         alert("Not the letter")
       }
+    }else{
+      setScore(score+1)
     }
-    console.log(word)
+    // console.log(word)
   }
   const handleVisible = function(){
     setShowgame(true)
@@ -59,7 +62,7 @@ export default function App() {
         <p className="word_char">{word}</p>
         <div>
           {letters.map((letter, index) => (
-            <button onClick={()=>handleClick(letter.toLowerCase())} className="keyboard-btns" key={index}>{letter}</button>
+            <button onClick={()=>handleClick(letter)} className="keyboard-btns" key={index}>{letter}</button>
           ))}
         </div>
       </div>
