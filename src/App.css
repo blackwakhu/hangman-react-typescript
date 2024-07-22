@@ -5,6 +5,33 @@ main {
   
 }
 
+.keyboard-div{
+  margin-left: 25%;
+  width: 50%;
+  text-align: center;
+  border: outset;
+  background: whitesmoke;
+  padding: 1.1em;
+  display: block;
+}
+
+.keyboard-reset{
+  color: red;
+  border: solid 2px red;
+  border-radius: 5px;
+  padding: 5px;
+  text-align: center;
+  margin-left: 47%; 
+  margin-top: 10px; 
+  background: white;
+  font-size: 1.1em;
+}
+
+.keyboard-reset:hover{
+  background: red;
+  color: white;
+}
+
 .keyboard-btns{
   padding: 10px;
   margin: 5px;

@@ -76,12 +76,12 @@ export default function App() {
         <h2>Score: {score}</h2>
         <div className={`${win ? 'hidden': ''}`}>
           <p className="word_char">{word}</p>
-          <div>
+          <div className="keyboard-div">
             {letters.map((letter, index) => (
               <button onClick={()=>handleClick(letter)} className="keyboard-btns" key={index}>{letter}</button>
             ))}
           </div>
-          <button onClick={resetPlay}>Reset Progress</button>
+          <button className='keyboard-reset' onClick={resetPlay}>Reset Progress</button>
         </div>
         <div className={`${win ? '': 'hidden'}`}>
           <p className="win-msg">You Got The Word</p>
