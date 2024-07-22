@@ -68,12 +68,12 @@ export default function App() {
   }
   return (
     <main>
-      <h1>Hangman Game</h1>
+      <h1 className="title">Hangman Game</h1>
       <div className={`play-div ${showgame ? 'hidden' : ''}`}>
         <button onClick={handleVisible}>Play</button>
       </div>
       <div className={`game-div ${showgame ? '' : 'hidden'}`}>
-        <h2>Score: {score}</h2>
+        <h2 className="score-table">Score: {score}</h2>
         <div className={`${win ? 'hidden': ''}`}>
           <p className="word_char">{word}</p>
           <div className="keyboard-div">

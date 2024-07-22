@@ -6,6 +6,15 @@ main {
   
 }
 
+/* title and score */
+.title{
+  text-align: center;
+}
+
+.score-table{
+  margin-left: 25%;
+}
+
 /* win message  */
 .win-msg{
   background: green;
@@ -28,8 +37,8 @@ main {
 
 /* keyboard related styles */
 .keyboard-div{
-  margin-left: 25%;
-  width: 50%;
+  margin-left: 20%;
+  width: 60%;
   text-align: center;
   border: outset;
   background: #606060;
