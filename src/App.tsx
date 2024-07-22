@@ -10,11 +10,15 @@ const vocabulary: string = [
   "Doll", "Eraser", "Feather", "Giraffe", "Hinge", "Igloo", "Jam", "Kangaroo", "Lemon", "Mango", "Notebook", "Orange", "Pillow", 
   "Quartz", "Raspberry", "Scarf", "Toothbrush", "Umbrella", "Vase", "Wagon", "Xylophone", "Yak", "Zipper", "Acorn", "Balloon", 
   "Crayon", "Diamond", "Eggplant", "Feather", "Grape", "Hammock", "Icicle", "Jar", "Kiwi", "Lollipop", "Mushroom", "Nest", 
-  "Octopus", "Pineapple", "Quill", "Rabbit", "Scarf", "Telescope", "Unicorn", "Vase", "Wagon", "Yo-yo"
+  "Octopus", "Pineapple", "Quill", "Rabbit", "Scarf", "Telescope", "Unicorn", "Vase", "Wagon"
 ]
 
 export default function App() {
   const [word, setWord] = useState("")
+  const [isFin, setFin] = useState(false)
+  const generateRandom = () => {
+    const random = Math.floor(Math.random() * vocabulary.length)
+  }
   return (
     <main>
       <h1>Hangman Game</h1>
