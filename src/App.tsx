@@ -31,6 +31,9 @@ export default function App() {
     let dashesArray: string[] = randomWord.split("").map((char) => "_");
     setWord(dashesArray.join(""));
   };
+  const isWordEqual = (word: string, guess: string) => {
+    return word.toLowerCase() === guess.toLowerCase();
+  }
   const handleClick = function(letter:string){
     console.log(guess)
     if (ind < guess.length) {
@@ -39,17 +42,29 @@ export default function App() {
         newWord[ind] = letter;
         setInd(ind + 1);
         setWord(newWord.join(''));
+        if (isWordEqual(guess, newWord.join(''))) {
+          setWin(true);
+          setScore(score + 1);
+        }
       } else {
         alert("Not the letter")
       }
-    }else{
-      setScore(score+1)
     }
-    // console.log(word)
   }
   const handleVisible = function(){
     setShowgame(true)
     generateDashes()
+  }
+  const resetPlay = function(){
+    generateDashes()
+    setWin(false)
+    setScore(0)
+    setInd(0)
+  }
+  const playAgain = function(){
+    generateDashes()
+    setWin(false)
+    setInd(0)
   }
   return (
     <main>
@@ -59,11 +74,19 @@ export default function App() {
       </div>
       <div className={`game-div ${showgame ? '' : 'hidden'}`}>
         <h2>Score: {score}</h2>
-        <p className="word_char">{word}</p>
-        <div>
-          {letters.map((letter, index) => (
-            <button onClick={()=>handleClick(letter)} className="keyboard-btns" key={index}>{letter}</button>
-          ))}
+        <div className={`${win ? 'hidden': ''}`}>
+          <p className="word_char">{word}</p>
+          <div>
+            {letters.map((letter, index) => (
+              <button onClick={()=>handleClick(letter)} className="keyboard-btns" key={index}>{letter}</button>
+            ))}
+          </div>
+          <button onClick={resetPlay}>Reset Progress</button>
+        </div>
+        <div className={`${win ? '': 'hidden'}`}>
+          <p className="win-msg">You Got The Word</p>
+          <button onClick={playAgain}>Play Again</button>
+          <button onClick={resetPlay}>Reset Progress</button>
         </div>
       </div>
     </main>
